@@ -1,37 +1,31 @@
-const todos = [{
-    text: 'make lunch',
-    completed: true
-}, {
-    text: 'do the dishes',
-    completed: false
-}, {
-    text: 'feed the cat',
-    completed: true
-}, {
-    text: 'do homework',
-    completed: false
-}]
+let todos = getSavedTodos()
 
+const filters = {
+    searchTodos: '',
+    hideCompleted: false
+}
 
-// remove all the paragraphs with 'the' in them
-const paragraphs = document.querySelectorAll('p')
-paragraphs.forEach(function (paragraph) {
-    if (paragraph.textContent.includes('the')) {
-        paragraph.remove()
-    }
+renderTodos(todos, filters) // rendering = process of displaying something on a screen
+
+document.querySelector('#search-text').addEventListener('input', function(e) { // 'e' is an argument
+        filters.searchText = e.target.value
+        renderTodos(todos, filters)
 })
 
-// Challenge: printing how many todos are incompleted
-const incompleteTodos = todos.filter(function (todo) { // a list of incomplete todos
-        return todo.completed  === false 
+document.querySelector('#new-form').addEventListener('submit', function(e) {
+    e.preventDefault() // prevents the data to be shown in URL
+    todos.push({ // adding a new todo
+        id: uuidv4(),
+        text: e.target.elements.text.value,
+        completed: false
+    })
+    saveTodos(todos)
+    renderTodos(todos, filters)
+    e.target.elements.text.value = '' // after typing todo into form and submiting, form clears itself
 })
-const summary = document.createElement('p') // new element 'p'
-summary.textContent = `You have ${incompleteTodos.length} todos left.` // text of the paragraph with inserted length
-document.querySelector('body').appendChild(summary)
 
-// printing out all todos as new paragraphs
-todos.forEach (function (todo) {
-    const p = document.createElement('p')
-    p.textContent = todo.text
-    document.querySelector('body').appendChild(p)
+// event listener for clicking the checkbox and calling the function
+document.querySelector('#hide-completed').addEventListener('change', function(e) {
+    filters.hideCompleted = e.target.checked // hideCompleted will be true when the checkbox is checked and reversed
+    renderTodos(todos, filters) // information lives in e.target.checked
 })
