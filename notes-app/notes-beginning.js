@@ -58,3 +58,54 @@ localStorage.setItem('user', userJSON) // saving the string
 const userJSON = localStorage.getItem('user') // accessing the information while converting it back into JS
 const user = JSON.parse(userJSON) 
 console.log(`${user.name} is ${user.age}`)
+
+
+const now = new Date() // time stamp of when the file was made
+const now = new Date('January 21 2001 6:25:01') // a given time stamp
+console.log(now.toString()) // prints the time stamp
+
+console.log(`Year ${now.getFullYear()}`)
+console.log(`Month ${now.getMonth()}`)
+console.log(`Day of month ${now.getDate()}`)
+console.log(`Hour ${now.getHours()}`)
+console.log(`Minutes ${now.getMinutes()}`)
+console.log(`Seconds ${now.getSeconds()}`)
+
+const now = new Date()
+console.log(now.getTime()) 
+/* returns a huge number representing a number of 
+miliseconds beetween January 1st 1970 00:00:00 and today */
+
+const now = new Date()
+const timestamp = now.getTime() // code that gets the time stamp and saves it
+
+const myDate = new Date(timestamp)
+console.log(myDate.getFullYear) // code specific to the date note was made
+
+
+// Challenge: which timestamp comes first
+const dateOne = new Date('January 14th 1980 05:39:47')
+const dateTwo = new Date('March 14th 2000 17:17:32')
+const dateOneTimestamp = dateOne.getTime()
+const dateTwoTimestamp = dateTwo.getTime()
+
+if (dateOneTimestamp < dateOneTimestamp) {
+    console.log(dateOne.toString())
+} else if (dateTwoTimestamp < dateOneTimestamp) {
+    console.log(dateTwo.toString())
+}
+
+const now = moment() // representation of the current time when the script runs
+now.add(1,'year').substract(20, 'days') // manipulating a certain moment in time: adding 1 year and substracting 20 days from time right now
+console.log(now.toString()) // returns a string of timestamp
+now.minute(1) // adds one minute
+console.log(now.toString())
+
+const now = moment()
+now.add(1,'year').substract(20, 'days')
+console.log(now.format('MMMM Do, YYYY')) // returns: August 10th 2021
+
+// Challenge: write your birthday timestamp
+const birthday = moment()
+birthday.year(2000).month(3).date(11)
+console.log(birthday.format('MMM D, YY') // Apr 11, 2000
