@@ -108,4 +108,5 @@ console.log(now.format('MMMM Do, YYYY')) // returns: August 10th 2021
 // Challenge: write your birthday timestamp
 const birthday = moment()
 birthday.year(2000).month(3).date(11)
-console.log(birthday.format('MMM D, YY') // Apr 11, 2000
+console.log(birthday.format('MMM D, YY')) /* Apr 11, 2000 */
+

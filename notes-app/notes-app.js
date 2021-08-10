@@ -1,7 +1,8 @@
 let notes = getSavedNotes()
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    sortBy: 'byEdited'
 }
 
 renderNotes(notes, filters) // calling the function while logging every change and filtering
@@ -9,10 +10,14 @@ renderNotes(notes, filters) // calling the function while logging every change a
 // addEventListeners: takes two arguments: ('action', listener (a function))
 document.querySelector('#create-note').addEventListener('click', function(e) {
     const id = uuidv4()
+    const timestamp = moment().valueOf()
+
     notes.push({ // adding a new note on (by default they are both empty strings)
         id: id, // call to the function that gives us the unique identifier
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
     })
     saveNotes(notes)
     location.assign(`edit.html#${id}`)
@@ -24,7 +29,8 @@ document.querySelector('#search-text').addEventListener('input', function(e) { /
 })
 
 document.querySelector('#filter-by').addEventListener('change', function(e) {
-    console.log(e.target.value) // information lives in e.target.value
+    filters.sortBy = e.target.value // information lives in e.target.value
+    renderNotes(notes, filters)
 })
 
 window.addEventListener('storage', function (e) {
