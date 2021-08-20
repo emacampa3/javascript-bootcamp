@@ -9,7 +9,6 @@ console.log(`${myBook.title} by ${myBook.author}`)
 myBook.title = 'Animal Farm'
 console.log(`${myBook.title} by ${myBook.author}`)
 
-
 // Challenge
 let person = {
     name: 'Ema',
