@@ -7,12 +7,12 @@ const filters = {
 
 renderTodos(todos, filters) // rendering = process of displaying something on a screen
 
-document.querySelector('#search-text').addEventListener('input', function(e) { // 'e' is an argument
+document.querySelector('#search-text').addEventListener('input', (e) => { // 'e' is an argument
         filters.searchText = e.target.value
         renderTodos(todos, filters)
 })
 
-document.querySelector('#new-form').addEventListener('submit', function(e) {
+document.querySelector('#new-form').addEventListener('submit', (e) => {
     e.preventDefault() // prevents the data to be shown in URL
     todos.push({ // adding a new todo
         id: uuidv4(),
@@ -25,7 +25,7 @@ document.querySelector('#new-form').addEventListener('submit', function(e) {
 })
 
 // event listener for clicking the checkbox and calling the function
-document.querySelector('#hide-completed').addEventListener('change', function(e) {
+document.querySelector('#hide-completed').addEventListener('change', (e) => {
     filters.hideCompleted = e.target.checked // hideCompleted will be true when the checkbox is checked and reversed
     renderTodos(todos, filters) // information lives in e.target.checked
 })
