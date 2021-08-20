@@ -1,17 +1,28 @@
-const getScoreText = function (score, total) {
-    const scorePercent = (score / total) * 100
-    
-    if (scorePercent >= 90) {
-        return `You got an A (${scorePercent}%).`
-    } else if (scorePercent >= 89 && scorePercent <= 80) {
-        return `You got a B (${scorePercent}%).`
-    } else if (scorePercent >= 79 && scorePercent <= 70) {
-        return `You got a C (${scorePercent}%).`
-    } else if (scorePercent >= 69 && scorePercent <= 60) {
-        return `You got a D (${scorePercent}%).`
+const gradeCalc = function (score, totalScore) {
+    if(typeof score === 'number' && typeof totalScore === 'number') {
+        const percent = (score / totalScore) * 100
+        let letterGrade = ''
+
+        if (percent >= 90) {
+            letterGrade = 'A'
+        } else if (percent >= 80) {
+            letterGrade = 'B'
+        } else if (percent >= 70) {
+            letterGrade = 'C'
+        } else if (percent >= 60) {
+            letterGrade = 'D'
+        } else {
+            letterGrade = 'F'
+        }
+        return `You got a ${letterGrade} (${percent})`
     } else {
-        return `You got an F (${scorePercent}%).`
+        throw Error('Please provide numbers only')
     }
+
+}  
+try {
+    const result = gradeCalc(15, 20)
+    console.log(result)
+} catch (e) {
+    console.log(e.message) /* provides the same Error message as above */
 }
-const scoreText = getScoreText(15, 20)
-console.log(scoreText)

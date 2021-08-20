@@ -1,8 +1,12 @@
+'use strict'
 // Read existing notes from localStorage
 const getSavedNotes = () => { 
     const notesJSON = localStorage.getItem('notes') // reads the data, if there is none, it will return null
-
-    return notesJSON ? JSON.parse(notesJSON) : [] // updates the notes array with fetched data, if there is none, array will stay empty
+    try {
+        return notesJSON ? JSON.parse(notesJSON) : [] // updates the notes array with fetched data, if there is none, array will stay empty
+    } catch (e) {
+        return []
+    }
 } 
 
 // Save the notes to localStorage

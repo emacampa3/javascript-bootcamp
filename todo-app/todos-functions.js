@@ -1,9 +1,13 @@
+'use strict'
 // Fetch existing todos from localStorage
 const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos') // reads the data, if there is none, it will return null
-
+    try {
     // updates the notes array with fetched data, if there is none, array will stay empty
     return todosJSON ? JSON.parse(todosJSON) : [] /* checking if JSON data exists: 'todosJSON !== null' is equal to 'todosJSON' */
+    } catch {
+        return []
+    }
 } 
 // Save todos to localStorage
 const saveTodos = (todos) => {
