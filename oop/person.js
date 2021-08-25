@@ -28,4 +28,4 @@ console.log(me.getBio())
 const person2 = new Person('Lana', 'Kolar', 20) // adds a new person to the console 
 console.log(person2.getBio())
 /* Branko is 21. Branko likes Reading.
-Lana is 20. */
+Lana is 20. */ 
