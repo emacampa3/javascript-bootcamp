@@ -22,10 +22,14 @@ Person.prototype.setName = function(fullName) {
 }
 
 const me = new Person('Ema', 'Čampa', 21, ['reading']) //'new' is a constructor function: adds a new object and gives us access to it 
+me.getBio = function() { // setting up a new property of this instance (it never goes up the prototype chain), but doesn't affect another chain
+    return 'testing' // terminal returns 'testing' instead of 'Branko is 21'
+}
+
 me.setName('Branko Daskijević') // overrides the initial names in array
 console.log(me.getBio())
 
 const person2 = new Person('Lana', 'Kolar', 20) // adds a new person to the console 
 console.log(person2.getBio())
-/* Branko is 21. Branko likes Reading.
+/* Branko is 21. Branko likes reading.
 Lana is 20. */ 
