@@ -16,3 +16,6 @@ Object.prototype.hasOwnProperty = () => 'This is the new function'
 // hasOwnProperty: returns true or false, checking if the object has a property name
 console.log(product.hasOwnProperty('name')) // returns: true (if inside the string was 'surname' it would return false)
 console.log(product) // returns: Object { name: "Influence" }
+
+// Primitive value: a value that does not have properties (is not an object): string, number, boolean, null, undefined
+// everything not on this list is an object
