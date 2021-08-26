@@ -29,13 +29,3 @@ Hangman.prototype.makeGuess = function (guess) { // creating a method for making
         this.remainingGuesses-- 
     }
 }
-
-const game1 = new Hangman('cat', 2)
-game1.makeGuess('c')
-console.log(game1.getPuzzle())
-console.log(game1.remainingGuesses)
-
-const game2 = new Hangman('Branko', 4)
-game2.makeGuess('r')
-console.log(game2.getPuzzle())
-console.log(game2.remainingGuesses)
