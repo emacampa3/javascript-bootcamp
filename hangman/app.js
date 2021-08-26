@@ -34,4 +34,4 @@ console.log(getScore)
 const product = 'Computer'
 console.log(product)
 
-// same goes for numbers and booleans
+// same goes for numbers and booleans, while null and undefined will never be objects
