@@ -17,5 +17,21 @@ Object.prototype.hasOwnProperty = () => 'This is the new function'
 console.log(product.hasOwnProperty('name')) // returns: true (if inside the string was 'surname' it would return false)
 console.log(product) // returns: Object { name: "Influence" }
 
-// Primitive value: a value that does not have properties (is not an object): string, number, boolean, null, undefined
-// everything not on this list is an object
+
+
+/* Primitive value: a value that does not have properties (is not an object): string, number, boolean, null, undefined
+everything not on this list is an object */
+
+// Array: myArray --> Array.prototype --> Object.prototype --> null (an array is a customized version of an object)
+const team = new Array(['Luke', 'Jake'])
+console.log(team.hasOwnProperty) // available on objects, therefore an array is an object
+
+// Function: myFunc --> Function.prototype --> Object.prototype --> null (function is also a customized version of an object)
+const getScore = () => 1
+console.log(getScore)
+
+// String: myString --> String.prototype --> Object-prototype --> null (string is also a customized version of an object)
+const product = 'Computer'
+console.log(product)
+
+// same goes for numbers and booleans
