@@ -1,5 +1,33 @@
 // Prototypal Inheritance
 
+// The class sytax (has the same functionality as the old sytax in constructor function below)
+class PersonClass { // a valid class definition
+    constructor(firstName, lastName, age, likes = []) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.age = age
+        this.likes = likes
+    }
+    // defining methods
+    getBio() {
+        let bio = `${this.firstName} is ${this.age}.`
+        
+        this.likes.forEach((like) => {
+        bio += ` ${this.firstName} likes ${like}.`
+        })
+        return bio
+    }
+    setName(fullName) {
+        const names = fullName.split(' ')
+        this.firstName = names[0]
+        this.lastName = names[1]
+    }
+}
+const myPerson = new PersonClass('Ema', 'Čampa', 21)
+console.log(myPerson.getBio())
+
+
+/* OLDER SYTAX THAT IS LESS READABLE */
 // me and person2 are instances of Person
 const Person = function (firstName, lastName, age, likes = []) {
     this.firstName = firstName
@@ -7,6 +35,7 @@ const Person = function (firstName, lastName, age, likes = []) {
     this.age = age
     this.likes = likes
 }
+// method
 Person.prototype.getBio = function() { // by setting up a method on the prototype property we share it with all instances so they can access it 
     let bio = `${this.firstName} is ${this.age}.`
     this.likes.forEach((like) => {
@@ -14,7 +43,7 @@ Person.prototype.getBio = function() { // by setting up a method on the prototyp
     })
     return bio
 }
-
+// method
 Person.prototype.setName = function(fullName) {
     const names = fullName.split(' ') // function that takes the fullName and splits it by the space: result: two items in array
     this.firstName = names[0]
