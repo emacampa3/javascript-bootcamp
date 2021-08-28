@@ -2,7 +2,28 @@ const Hangman = function(word, remainingGuesses) {
     this.word = word.toLowerCase().split('') // set up the word instance property as an array of lower case letters (toLowerCase returns a string, on which we can use split())
     this.remainingGuesses = remainingGuesses
     this.guessedLetters = [] // set up another instance property to store guessed letters
+    this.status = 'playing' // set up new status property with initial value of 'playing'
 }
+
+// create method for recalculating status to 'playing', 'finished' or 'failed'
+Hangman.prototype.calculateStatus = function () {
+    let finished = true
+    this.word.forEach((letter) => {
+        if (this.guessedLetters.includes(letter)) { // checkin gif the letter has been guessed
+
+        } else {
+            finished = false
+        }
+    })
+    if (this.remainingGuesses === 0) { // with 0 remaining guesses we have failed the game
+        this.status = 'failed'
+    } else if (finished) {
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
+    }
+}
+
 Hangman.prototype.getPuzzle = function() {
     let puzzle = '' // puzzle is an empty string at first: into empty array we type our guess and terminal prints the output
     
@@ -28,4 +49,6 @@ Hangman.prototype.makeGuess = function (guess) { // creating a method for making
     if (isUnique && isBadGuess) { // decrement remaining guesses by one (only if guess is unique and false)
         this.remainingGuesses-- 
     }
+
+    this.calculateStatus() // calling the function
 }
