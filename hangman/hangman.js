@@ -7,21 +7,9 @@ const Hangman = function(word, remainingGuesses) {
 
 // create method for recalculating status to 'playing', 'finished' or 'failed'
 Hangman.prototype.calculateStatus = function () {
-    let finished = true
-    this.word.forEach((letter) => {
-        if (this.guessedLetters.includes(letter)) { // checkin gif the letter has been guessed
-
-        } else {
-            finished = false
-        }
+    const finished = this.word.every((letter) => { // every() method tests whether every single item in the array pass the test (it returns a Boolean value)
+        return this.guessedLetters.includes(letter) // returns true if it passes the tests (the letter has been guessed)
     })
-    if (this.remainingGuesses === 0) { // with 0 remaining guesses we have failed the game
-        this.status = 'failed'
-    } else if (finished) {
-        this.status = 'finished'
-    } else {
-        this.status = 'playing'
-    }
 }
 
 Hangman.prototype.getPuzzle = function() {
