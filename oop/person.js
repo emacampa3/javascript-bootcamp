@@ -23,8 +23,40 @@ class PersonClass { // a valid class definition
         this.lastName = names[1]
     }
 }
-const myPerson = new PersonClass('Ema', 'Čampa', 21)
-console.log(myPerson.getBio())
+
+// creating a subclass Employee that extends from class Person: overriding the original function
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, likes) {
+        super(firstName, lastName, age, likes) // super is the function above (Person)
+        this.position = position // defining new attribute
+    }
+    getBio() {
+        return `${this.firstName} ${this.lastName} is a ${this.position}` // a new version of getBio()
+    }
+    getYearsLeft() {
+        return 65 - this.age // calculates the ages before retirement of the employee
+    }
+}
+
+class Student extends Person {
+    constructor(firstName, lastName, age, grade, likes) {
+        super(firstName, lastName, age, likes)
+        this.grade = grade
+    }
+    updateGrade(change) {
+        this.grade += change
+    }
+    getBio() {
+        const status = this.grade >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${status} the class.`
+    }
+}
+const me = newStudent('Ema', 'Čampa', 21, 88, [])
+me.updateGrade(-20)
+console.log(me)
+console.log(me.getBio())
+
+
 
 
 /* OLDER SYTAX THAT IS LESS READABLE */
