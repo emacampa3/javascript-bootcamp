@@ -17,10 +17,13 @@ class PersonClass { // a valid class definition
         })
         return bio
     }
-    setName(fullName) {
+    set fullName(fullName) {
         const names = fullName.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
     }
 }
 
@@ -31,7 +34,7 @@ class Employee extends Person {
         this.position = position // defining new attribute
     }
     getBio() {
-        return `${this.firstName} ${this.lastName} is a ${this.position}` // a new version of getBio()
+        return `${this.fullName} is a ${this.position}` // a new version of getBio()
     }
     getYearsLeft() {
         return 65 - this.age // calculates the ages before retirement of the employee
@@ -51,9 +54,8 @@ class Student extends Person {
         return `${this.firstName} is ${status} the class.`
     }
 }
-const me = newStudent('Ema', 'Čampa', 21, 88, [])
-me.updateGrade(-20)
-console.log(me)
+const me = new Employee('Ema', 'Čampa', 21, 'Student', [])
+me.fullName = 'Branko Daskijević'
 console.log(me.getBio())
 
 
