@@ -25,10 +25,25 @@ Hangman.prototype.getPuzzle = function() {
     return puzzle
 }
 
+Hangman.prototype.getStatusMessage = function () {
+    if (this.status === 'playing') {
+        return `Guesses left: ${this.remainingGuesses}`
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${this.word.join('')}".` // pushing all the characters together to form a word
+    } else {
+        return 'Great work! You guessed the word.'
+    }
+}
+
 Hangman.prototype.makeGuess = function (guess) { // creating a method for making a guess that accepts a character for guessing
     guess = guess.toLowerCase()
     const isUnique = !this.guessedLetters.includes(guess) // looking at the array of guessed letters to see if guess is inside of the array (calling includes): ! reverses it: if there are no matches, run the following code
     const isBadGuess = !this.word.includes(guess) // does the word array includes the guess: if it's a bad guess (if the array does not include the guess), we get a value of true
+
+
+    if (this.status !== 'playing') { // code runs when status is 'playing'
+        return // returns undefined, prevents the rest of the function from running
+    }
 
     if (isUnique) { 
         this.guessedLetters.push // if the guess is correct, we add a letter to the guessedLetter 
