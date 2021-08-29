@@ -12,24 +12,14 @@ window.addEventListener('keypress', (e) => {
     guessesEl.textContent = game1.statusMessage
 })
 
-// HTTP (Hypertext Transfer Protocol)
-// request: what do we want to do
-// response: what was actually done
-
-// making an HTTP request from JavaScript code
-const request = new XMLHttpRequest()
-
-request.addEventListener('readystatechange', () => {
-    if (e.target.readyState === 4 && e.target.status === 200) { // if status of readyState equals 4 or statusCode is 200, execute the following
-        const data = JSON.parse(e.target.responseText)
-        console.log(data) // prints the object: whatever text the io inputs as a word nedded to be guessed
-    } else if (e.target.readyState === 4) {
-        console.log('An error has taken place')
+// Callback pattern: one is always defined, never both and never none
+getPuzzle((error, puzzle) => {
+    if (error) {
+        console.log(`Error: ${error}`)
+    } else {
+        console.log(puzzle)
     }
 })
-
-request.open('GET', 'http:puzzle.mead.io/puzzle?wordCount=3')
-request.send()
 
 
 // Challenge
