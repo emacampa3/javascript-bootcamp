@@ -31,8 +31,28 @@ getCountry('SI').then((country) => {
 
 
 // Promise pattern Puzzle
-getPuzzle().then((puzzle) => {
+getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
 }, (error) => {
     console.log(`Error: ${error}`)
+})
+// Fetch API for promise pattern Puzzle: abstracting the function getPuzzle behind the scenes
+getPuzzle().then((data) => {
+    console.log(data.puzzle)
+}).catch((error) => {
+    console.log(`Error: ${error}`)
+})
+
+
+// Fetch API: returns a promise
+fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
+    if (response.status == 200) {
+        return response.json() // promise chaining part 1
+    } else {
+        throw new Error('Unable to fetch the puzzle') // handling the error part 1
+    }
+}).then((data) => { // promise chaining part 2
+    console.log(data.puzzle)
+}).catch((error) => { // handling the error part 2
+    console.log(error)
 })

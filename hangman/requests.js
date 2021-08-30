@@ -50,4 +50,16 @@ const getPuzzle = (wordCount) => new Promise((resolve, reject) => {
     request.open('GET', 'http://puzzle.mead.io/puzzle?wordCount=3')
     request.send()
 })
+// Fetch API for promise pattern Puzzle
+const getPuzzle = () => {
+    return fetch('https://puzzle.mead.io/puzzle?wordCount').then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error('Unable to fetch puzzle.')
+        }
+    }).then((data)=> {
+        return data.puzzle
+    })
+}
 
