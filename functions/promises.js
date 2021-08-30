@@ -16,12 +16,14 @@ getDataCallback((error, data) => {
 
 
 // Promise API
-const myPromise = new Promise((resolve, reject) => { // resolve: called when things go well; reject: called when something went poorly
+const getDataPromise = () => new Promise((resolve, reject) => { // resolve: called when things go well; reject: called when something went poorly
     setTimeout(() => {
         // resolve('This is the promise data.')
         reject('This is my promise error') // we either pass in resolve or reject, never both
     }, 2000)
 })
+
+const myPromise = getDataPromise()
 // calling the function
 myPromise.then((data) => { // function only fires when the promise resolves
     console.log(data)

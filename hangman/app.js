@@ -12,20 +12,27 @@ window.addEventListener('keypress', (e) => {
     guessesEl.textContent = game1.statusMessage
 })
 
-// Callback pattern: one is always defined, never both and never none
-getPuzzle((error, puzzle) => {
-    if (error) {
-        console.log(`Error: ${error}`)
-    } else {
-        console.log(puzzle)
-    }
-})
 
-// Callback pattern:
+// Callback pattern Country: one is always defined, never both and never none
 getCountry('SI', (error, country) => {
     if (error) {
         console.log(error)
     } else {
         console.log(`Country name: ${country.name}`)
     }
+})
+
+// Promise pattern Country: 
+getCountry('SI').then((country) => {
+    console.log(country.name)
+}, (error) => {
+    console.log(`Error: ${error}`)
+})
+
+
+// Promise pattern Puzzle
+getPuzzle().then((puzzle) => {
+    console.log(puzzle)
+}, (error) => {
+    console.log(`Error: ${error}`)
 })
