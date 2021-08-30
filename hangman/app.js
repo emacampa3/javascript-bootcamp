@@ -21,20 +21,11 @@ getPuzzle((error, puzzle) => {
     }
 })
 
-
-// Challenge
-const countryCode = "SI"
-const countryRequest = new XMLHttpRequest()
-
-countryRequest.addEventListener('readystatechange', (e) => {
-    if (e.target.readyState === 4 && e.target.status === 200) {
-        const data = JSON.parse(e.target.responseText) // parse the responseText to get back the array of objects
-        const country = data.find((country) => country.alpha2Code === countryCode) // if those are equal, we store the match under 'country'
-        console.log(country.name) // print the full country name
-    } else if(e.target.readyState === 4) {
-        console.log('Unable to fetch data')
+// Callback pattern:
+getCountry('SI', (error, country) => {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log(`Country name: ${country.name}`)
     }
 })
-
-countryRequest.open('GET', 'https://restcountries.eu/rest/v2/all')
-countryRequest.send()
