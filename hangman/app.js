@@ -13,7 +13,7 @@ window.addEventListener('keypress', (e) => {
 })
 
 
-// Callback pattern Country: one is always defined, never both and never none
+// Callback pattern Country: one is always defined, never both and never none (version 1)
 getCountry('SI', (error, country) => {
     if (error) {
         console.log(error)
@@ -21,13 +21,19 @@ getCountry('SI', (error, country) => {
         console.log(`Country name: ${country.name}`)
     }
 })
-
-// Promise pattern Country: 
+// Promise pattern Country: (version 2)
 getCountry('SI').then((country) => {
     console.log(country.name)
 }, (error) => {
     console.log(`Error: ${error}`)
 })
+// Modified promise pattern Country using catch as error handler: (version 3)
+getCountry('SI').then((country) => {
+    console.log(country.name)
+}).catch((error) => {
+    console.log(`Error: ${error}`)
+})
+
 
 
 // Promise pattern Puzzle
@@ -56,3 +62,5 @@ fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
 }).catch((error) => { // handling the error part 2
     console.log(error)
 })
+
+

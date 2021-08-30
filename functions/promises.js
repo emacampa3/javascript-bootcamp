@@ -32,7 +32,7 @@ const getDataPromise = (num) => new Promise((resolve, reject) => { // resolve: c
         typeof num === 'number' ? resolve(num * 2) : reject('Number must be provided')
     }, 2000)
 })
-
+// worse version of function
 getDataPromise(2).then((data) => {
     getDataPromise(data).then((data) => {
         console.log(`Promise data: ${data}`)

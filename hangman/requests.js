@@ -1,4 +1,4 @@
-// Callback pattern Country
+// Callback pattern Country (version 1)
 const getCountry = (countryCode, callback) => {
     const countryRequest = new XMLHttpRequest()
 
@@ -14,8 +14,7 @@ const getCountry = (countryCode, callback) => {
     countryRequest.open('GET', 'https://restcountries.eu/rest/v2/all')
     countryRequest.send()
 }
-
-// Promise pattern Country:
+// Promise pattern Country (version 2)
 const getCountry = (countryCode) => new Promise((resolve, reject) => {
     const countryRequest = new XMLHttpRequest()
 
@@ -31,6 +30,19 @@ const getCountry = (countryCode) => new Promise((resolve, reject) => {
     countryRequest.open('GET', 'https://restcountries.eu/rest/v2/all')
     countryRequest.send()
 })
+// Converted getCountry that uses fetch and returns a promise (version 3)
+const getCountry = (countryCode) => {
+    return fetch('https://restcountries.eu/rest/v2/all').then((response) => {
+            if (response.status == 200) {
+                return response.json()
+        } else {
+            throw new Error('Unable to fetch data')
+        }
+    }).then((data) => {
+        return country = data.find((country) => country.alpha2Code === countryCode)
+    })
+}
+
 
 
 // Promise pattern Puzzle
