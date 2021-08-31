@@ -33,6 +33,15 @@ getCountry('SI').then((country) => {
 }).catch((error) => {
     console.log(`Error: ${error}`)
 })
+// Promise chaining Location & Country: using information from one to make another
+getLocation().then((location) => {
+    return getCountry(location.country)
+}).then((country) => {
+    console.log(country.name)
+}).catch((error) => {
+    console.log(`Error: ${error}`)
+})
+
 
 
 

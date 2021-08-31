@@ -75,3 +75,16 @@ const getPuzzle = () => {
     })
 }
 
+
+
+// Fetch API for promise pattern getLocation
+// create getLocation fucntion which tkes no arguments
+const getLocation = () => {
+    return fetch('https://ipinfo.io/json?token=1a11bd55cc8f9c').then((response) => {
+        if (response.status === 200) {
+            return response.json
+        } else {
+            throw new Error('Unable to fetch location')
+        }
+    })
+}
