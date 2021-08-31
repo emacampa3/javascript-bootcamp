@@ -45,7 +45,7 @@ const getCountry = (countryCode) => {
 
 
 
-// Promise pattern Puzzle
+// Promise pattern Puzzle (version 1)
 const getPuzzle = (wordCount) => new Promise((resolve, reject) => {
     // making an HTTP request from JavaScript code
     const request = new XMLHttpRequest()
@@ -62,7 +62,7 @@ const getPuzzle = (wordCount) => new Promise((resolve, reject) => {
     request.open('GET', 'http://puzzle.mead.io/puzzle?wordCount=3')
     request.send()
 })
-// Fetch API for promise pattern Puzzle
+// Fetch API for promise pattern Puzzle (version 2)
 const getPuzzle = () => {
     return fetch('https://puzzle.mead.io/puzzle?wordCount').then((response) => {
         if (response.status === 200) {
@@ -73,6 +73,17 @@ const getPuzzle = () => {
     }).then((data)=> {
         return data.puzzle
     })
+}
+// Function using async-await promise pattern: Puzzle (version 3)
+const getPuzzle = async () => {
+    const response = await fetch('https://puzzle.mead.io/puzzle?wordCount')
+    
+    if (response.status === 200) {
+        const data = await response.json()
+        return data.puzzle
+    } else {
+        throw new Error('Unable to get puzzle.')
+    }
 }
 
 
