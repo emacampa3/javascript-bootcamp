@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head></head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Notes App</title>
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="icon" href="image/notes.png">
+    </head>
     <body>
-        <a href="index.html">Home</a>
-        <input id="note-title" placeholder="Note title">
-        <span id="last-edited"></span>
-        <textarea id="note-body" placeholder="Enter note text"></textarea>
-        <button id="remove-note">Remove note</button>
+        <div class="header">
+            <div class="container">
+                <h1 class="header_title">Notes App</h1>
+                <h2 class="header_subtitle">Take notes and never forget</h2>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="actions_container actions_container-spaced">
+                <a href="index.html">Home</a>
+                <span id="last-edited"></span>
+            </div>
+        </div>
+        
+        <div class="container">
+            <input id="note-title" class="title-input" placeholder="Note title">
+            <textarea id="note-body" class="body-input" placeholder="Enter note text"></textarea>
+            <button id="remove-note" class="button button-secondary">Remove note</button>
+        </div>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
-        <script src="notes-functions.js"></script> <!-- file that defines all the functions -->
-        <script src="notes-edit.js"></script>
+        <script src="scripts/notes-functions.js"></script> <!-- file that defines all the functions -->
+        <script src="scripts/notes-edit.js"></script>
     </body>
     </html>
