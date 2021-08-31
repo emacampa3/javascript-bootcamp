@@ -12,16 +12,20 @@ document.querySelector('#search-text').addEventListener('input', (e) => { // 'e'
         renderTodos(todos, filters)
 })
 
-document.querySelector('#new-form').addEventListener('submit', (e) => {
+document.querySelector('#new-todo').addEventListener('submit', (e) => {
+    const text = e.target.elements.text.value.trim()
     e.preventDefault() // prevents the data to be shown in URL
-    todos.push({ // adding a new todo
-        id: uuidv4(),
-        text: e.target.elements.text.value,
-        completed: false
-    })
-    saveTodos(todos)
-    renderTodos(todos, filters)
-    e.target.elements.text.value = '' // after typing todo into form and submiting, form clears itself
+
+    if (text.length > 0) {
+        todos.push({ // adding a new todo
+            id: uuidv4(),
+            text,
+            completed: false
+        })
+        saveTodos(todos)
+        renderTodos(todos, filters)
+        e.target.elements.text.value = '' // after typing todo into form and submiting, form clears itself
+    }
 })
 
 // event listener for clicking the checkbox and calling the function
