@@ -35,7 +35,7 @@ Hangman.prototype.getStatusMessage = function () {
     }
 }
 
-Hangman.prototype.makeGuess = function (guess) { // creating a method for making a guess that accepts a character for guessing
+Hangman.prototype.makeGuess = function (guess) { // creating a method for making a guess that accepts a character
     guess = guess.toLowerCase()
     const isUnique = !this.guessedLetters.includes(guess) // looking at the array of guessed letters to see if guess is inside of the array (calling includes): ! reverses it: if there are no matches, run the following code
     const isBadGuess = !this.word.includes(guess) // does the word array includes the guess: if it's a bad guess (if the array does not include the guess), we get a value of true
